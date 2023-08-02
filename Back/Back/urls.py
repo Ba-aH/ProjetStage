@@ -13,3 +13,4 @@ urlpatterns = [
 
 # Use re_path for including media URLs to handle special characters in MEDIA_URL
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+#  sdskfq
