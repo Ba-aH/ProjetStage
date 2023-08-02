@@ -13,6 +13,9 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import User
 from .serializer import UserSerializer
+from django.contrib.auth.hashers import make_password
+
+
 
 class ProfileView(APIView):
     authentication_classes = [SessionAuthentication, BasicAuthentication, TokenAuthentication]
@@ -45,6 +48,9 @@ class CustomAuthToken(ObtainAuthToken):
     
 @api_view(['POST'])
 def signup(request):
+    hashed_password = make_password(request.data["password"])
+    print(hashed_password)
+    request.data["password"] = hashed_password
     serializer = UserSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
