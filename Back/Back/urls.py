@@ -6,11 +6,13 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('', include('public.urls')),
     path('accounts/', include('utilisateur.urls')),
+    path('piece_list/',include('piece.urls')),
     path('admin/', admin.site.urls),
     path('api/auth/', include('rest_framework.urls')),
     path('car_parts/', include('api.urls')),
+    path('panier_list/',include('panier.urls')),
 ]
 
-# Use re_path for including media URLs to handle special characters in MEDIA_URL
+
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 #  sdskfq
